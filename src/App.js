@@ -1,23 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import {Title} from "./components/Title";
-import {TextArea} from "./components/TextArea";
-import {MessageArea} from "./components/MessageArea";
-import {root} from "./index";
 
-const messageList = []
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Dialog} from "./components/Dialog";
 
-function pushMessage(message) {
-    messageList.push(message)
-    root.render(<App/>)
-}
+
 
 function App() {
     return (
         <div className="App">
-            <Title/>
-            <MessageArea messages={messageList}/>
-            <TextArea pushMessage={pushMessage}/>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<Dialog/>} path={"*"}>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+
         </div>
     );
 }
